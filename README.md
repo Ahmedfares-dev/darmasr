@@ -53,6 +53,20 @@ A comprehensive election management system for compound buildings, built with No
    mongod
    ```
 
+6. Seed the database (optional but recommended):
+   ```bash
+   # Seed buildings (creates 56 buildings numbered 1-56)
+   npm run seed:buildings
+   
+   # Create admin user (optional)
+   npm run seed:admin
+   
+   # Or seed everything at once
+   npm run seed:all
+   ```
+   
+   See [DATABASE_SEEDING.md](./DATABASE_SEEDING.md) for detailed seeding instructions.
+
 ## Running the Application
 
 ### Development Mode
