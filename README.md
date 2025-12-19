@@ -77,6 +77,81 @@ npm run client
 The backend will run on `http://localhost:5000`
 The frontend will run on `http://localhost:5173`
 
+### Production Mode with PM2
+
+PM2 is a process manager for Node.js applications that keeps your application running in the background and automatically restarts it if it crashes.
+
+**Prerequisites:**
+```bash
+npm install -g pm2
+```
+
+**1. Verify Environment Variables:**
+Before starting with PM2, verify that all required environment variables are set:
+```bash
+npm run check-env
+```
+
+**2. Start the application with PM2:**
+```bash
+# Development mode
+npm run pm2:start
+
+# Production mode
+npm run pm2:start:prod
+```
+
+**3. Useful PM2 Commands:**
+```bash
+# Check status
+npm run pm2:status
+
+# View logs
+npm run pm2:logs
+
+# Restart application
+npm run pm2:restart
+
+# Stop application
+npm run pm2:stop
+
+# Delete from PM2
+npm run pm2:delete
+
+# Monitor (real-time monitoring)
+npm run pm2:monit
+```
+
+**4. Environment Variables:**
+Make sure your `.env` file is properly configured. You can use `.env.example` as a template:
+```bash
+cp .env.example .env
+# Then edit .env with your actual values
+```
+
+**Required Environment Variables:**
+- `JWT_SECRET` - Secret key for JWT token generation
+- `MONGODB_URI` - MongoDB connection string
+- `S3_ACCESS_KEY` - S3 access key for file uploads
+- `S3_SECRET_KEY` - S3 secret key for file uploads
+- `S3_BUCKET` - S3 bucket name
+
+**Optional Environment Variables:**
+- `PORT` - Server port (default: 5000)
+- `NODE_ENV` - Environment mode (development/production)
+- `S3_REGION` - S3 region (default: us-central-1)
+- `S3_ENDPOINT` - S3 endpoint URL
+- `S3_VERIFY_BUCKET` - Verify bucket exists (default: true)
+- `S3_USE_ACL` - Use ACL for S3 (default: false)
+- `VITE_API_URL` - Frontend API URL
+
+**PM2 Configuration:**
+The PM2 configuration is in `ecosystem.config.js`. It includes:
+- Automatic restart on crash
+- Memory limit (1GB)
+- Log file management
+- Environment-specific settings
+
 ## API Endpoints
 
 ### Buildings

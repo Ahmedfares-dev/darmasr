@@ -9,7 +9,16 @@
     "client": "cd client && npm run dev",
     "install-all": "npm install && cd client && npm install",
     "build": "cd client && npm run build",
-    "seed:buildings": "node server/scripts/seedBuildings.js"
+    "seed:buildings": "node server/scripts/seedBuildings.js",
+    "check-env": "node server/scripts/checkEnv.js",
+    "pm2:start": "pm2 start ecosystem.config.js",
+    "pm2:stop": "pm2 stop ecosystem.config.js",
+    "pm2:restart": "pm2 restart ecosystem.config.js",
+    "pm2:delete": "pm2 delete ecosystem.config.js",
+    "pm2:logs": "pm2 logs darmasr-api",
+    "pm2:status": "pm2 status",
+    "pm2:monit": "pm2 monit",
+    "pm2:start:prod": "pm2 start ecosystem.config.js --env production"
   },
   "keywords": [
     "elections",
