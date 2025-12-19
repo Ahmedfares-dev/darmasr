@@ -21,6 +21,23 @@ module.exports = {
       out_file: './logs/api-out.log',
       log_file: './logs/api-combined.log',
       time: true
+    },
+    {
+      name: 'darmasr-client',
+      script: 'npm',
+      args: 'run dev',
+      cwd: './client',
+      instances: 1,
+      autorestart: true,
+      watch: false,
+      max_memory_restart: '500M',
+      env: {
+        NODE_ENV: 'development'
+      },
+      error_file: './logs/client-error.log',
+      out_file: './logs/client-out.log',
+      log_file: './logs/client-combined.log',
+      time: true
     }
   ]
 };

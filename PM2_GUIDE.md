@@ -21,15 +21,28 @@ This script will:
 
 ## Starting the Application
 
-### Development Mode
+### Development Mode (Backend + Frontend Dev Server)
+This will start both the backend API and the frontend Vite dev server:
 ```bash
 npm run pm2:start
+# or explicitly
+npm run pm2:start:dev
 ```
 
-### Production Mode
+You should see **2 processes**:
+- `darmasr-api` - Backend API server (port 5000)
+- `darmasr-client` - Frontend Vite dev server (port 5173)
+
+### Production Mode (Backend Only - Serves Built Frontend)
+This will build the frontend and start only the backend, which serves the built static files:
 ```bash
 npm run pm2:start:prod
 ```
+
+You should see **1 process**:
+- `darmasr-api` - Backend API server that also serves the built frontend (port 5000)
+
+**Note:** In production mode, the frontend is built and served as static files from the Express server, so you only need one process.
 
 ## Managing the Application
 

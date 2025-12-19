@@ -15,10 +15,13 @@
     "pm2:stop": "pm2 stop ecosystem.config.js",
     "pm2:restart": "pm2 restart ecosystem.config.js",
     "pm2:delete": "pm2 delete ecosystem.config.js",
-    "pm2:logs": "pm2 logs darmasr-api",
+    "pm2:logs": "pm2 logs",
+    "pm2:logs:api": "pm2 logs darmasr-api",
+    "pm2:logs:client": "pm2 logs darmasr-client",
     "pm2:status": "pm2 status",
     "pm2:monit": "pm2 monit",
-    "pm2:start:prod": "pm2 start ecosystem.config.js --env production"
+    "pm2:start:prod": "npm run build && pm2 start ecosystem.config.prod.js --env production",
+    "pm2:start:dev": "pm2 start ecosystem.config.js"
   },
   "keywords": [
     "elections",
