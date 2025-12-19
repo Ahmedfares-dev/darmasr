@@ -81,33 +81,55 @@ The frontend will run on `http://localhost:5173`
 
 PM2 is a process manager for Node.js applications that keeps your application running in the background and automatically restarts it if it crashes.
 
-**Prerequisites:**
+**Quick Start (Recommended):**
+```bash
+# One command to start everything (checks env, creates logs, starts PM2)
+npm start
+# or
+./start.sh
+```
+
+**Manual Start:**
+
+**1. Prerequisites:**
 ```bash
 npm install -g pm2
 ```
 
-**1. Verify Environment Variables:**
-Before starting with PM2, verify that all required environment variables are set:
+**2. Verify Environment Variables:**
 ```bash
 npm run check-env
 ```
 
-**2. Start the application with PM2:**
+**3. Start the application:**
 ```bash
-# Development mode
+# Development mode (runs both API + Client dev server)
 npm run pm2:start
 
-# Production mode
+# Production mode (builds frontend, serves from backend)
 npm run pm2:start:prod
 ```
 
-**3. Useful PM2 Commands:**
+**4. Verify Both Processes Are Running:**
+```bash
+npm run verify-pm2
+```
+
+You should see **2 processes** in development mode:
+- `darmasr-api` - Backend API (port 5000)
+- `darmasr-client` - Frontend Vite dev server (port 5173)
+
+**5. Useful PM2 Commands:**
 ```bash
 # Check status
 npm run pm2:status
 
-# View logs
+# View all logs
 npm run pm2:logs
+
+# View specific logs
+npm run pm2:logs:api      # Backend logs only
+npm run pm2:logs:client   # Frontend logs only
 
 # Restart application
 npm run pm2:restart
@@ -120,9 +142,12 @@ npm run pm2:delete
 
 # Monitor (real-time monitoring)
 npm run pm2:monit
+
+# Verify both processes
+npm run verify-pm2
 ```
 
-**4. Environment Variables:**
+**6. Environment Variables:**
 Make sure your `.env` file is properly configured. You can use `.env.example` as a template:
 ```bash
 cp .env.example .env
@@ -145,12 +170,20 @@ cp .env.example .env
 - `S3_USE_ACL` - Use ACL for S3 (default: false)
 - `VITE_API_URL` - Frontend API URL
 
+**Access Points:**
+- Backend API: `http://your-server:5000`
+- Frontend: `http://your-server:5173`
+- Health Check: `http://your-server:5000/api/health`
+
 **PM2 Configuration:**
 The PM2 configuration is in `ecosystem.config.js`. It includes:
 - Automatic restart on crash
-- Memory limit (1GB)
+- Memory limits (1GB for API, 500MB for client)
 - Log file management
 - Environment-specific settings
+- Absolute paths for reliable server deployment
+
+**For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md)**
 
 ## API Endpoints
 
