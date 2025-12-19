@@ -23,7 +23,8 @@
     "pm2:monit": "pm2 monit",
     "pm2:start:prod": "npm run build && pm2 start ecosystem.config.prod.js --env production",
     "pm2:start:dev": "pm2 start ecosystem.config.js",
-    "start": "./start.sh"
+    "start": "./start.sh",
+    "fix-client": "./fix-client.sh"
   },
   "keywords": [
     "elections",

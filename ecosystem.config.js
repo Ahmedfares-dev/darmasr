@@ -28,9 +28,8 @@ module.exports = {
     },
     {
       name: 'darmasr-client',
-      script: 'npm',
-      args: 'run dev',
-      cwd: path.join(__dirname, 'client'),
+      script: path.join(__dirname, 'client/start-vite.sh'),
+      interpreter: '/bin/bash',
       instances: 1,
       autorestart: true,
       watch: false,
@@ -45,7 +44,10 @@ module.exports = {
       log_file: path.join(__dirname, 'logs/client-combined.log'),
       time: true,
       merge_logs: true,
-      log_date_format: 'YYYY-MM-DD HH:mm:ss Z'
+      log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
+      kill_timeout: 5000,
+      wait_ready: true,
+      listen_timeout: 10000
     }
   ]
 };
