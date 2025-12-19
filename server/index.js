@@ -12,8 +12,9 @@ app.use(express.json());
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/darmasr', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  // Remove deprecated options for newer MongoDB driver
+  // useNewUrlParser: true,  // Deprecated
+  // useUnifiedTopology: true,  // Deprecated
 })
 .then(() => console.log('MongoDB Connected'))
 .catch(err => console.error('MongoDB connection error:', err));

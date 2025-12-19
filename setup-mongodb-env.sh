@@ -9,10 +9,16 @@ MONGO_PORT="${MONGO_PORT:-27017}"
 MONGO_DB="${MONGO_DB:-darmasr}"
 
 # URL encode the password (handle special characters)
+# Note: We need to properly encode each character
 # > = %3E
 # & = %26
-# £ = %C2%A3
+# £ = %C2%A3 (UTF-8 encoding for pound sign)
+# Using Python or node to properly encode, but for now manual encoding:
 ENCODED_PASSWORD="yV0Ba58%3E%264%C2%A31"
+
+# Alternative: Try without encoding first, MongoDB driver might handle it
+# But special characters usually need encoding
+# If this doesn't work, we'll need to use a proper URL encoder
 
 echo "Setting up MongoDB connection string..."
 echo ""

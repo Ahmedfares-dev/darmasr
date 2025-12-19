@@ -12,6 +12,7 @@
     "seed:buildings": "node server/scripts/seedBuildings.js",
     "seed:admin": "node server/scripts/seedAdmin.js",
     "seed:all": "npm run seed:buildings && npm run seed:admin",
+    "test:mongodb": "node test-mongodb-connection.js",
     "check-env": "node server/scripts/checkEnv.js",
     "verify-pm2": "node server/scripts/verifyPM2.js",
     "check-status": "./check-status.sh",

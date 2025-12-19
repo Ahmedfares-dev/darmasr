@@ -16,8 +16,9 @@ async function seedBuildings() {
     // Connect to MongoDB with authentication support
     console.log('جاري الاتصال بقاعدة البيانات...');
     await mongoose.connect(mongoUri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      // Remove deprecated options for newer MongoDB driver
+      // useNewUrlParser: true,  // Deprecated
+      // useUnifiedTopology: true,  // Deprecated
     });
     console.log('✅ تم الاتصال بقاعدة البيانات بنجاح');
 
