@@ -7,6 +7,8 @@ module.exports = {
       autorestart: true,
       watch: false,
       max_memory_restart: '1G',
+      // PM2 will load .env file automatically
+      env_file: './.env',
       env: {
         NODE_ENV: 'development',
         PORT: 5000
